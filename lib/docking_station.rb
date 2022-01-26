@@ -1,3 +1,5 @@
+require_relative "./bike.rb"
+
 class DockingStation 
     
     attr_reader :bikes
@@ -7,7 +9,8 @@ class DockingStation
     end    
     
     def release_bike
-        bike = Bike.new
+        raise "no bikes available" if @bikes.empty?
+        Bike.new
     end
 
     def dock(bike)
