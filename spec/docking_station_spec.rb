@@ -8,4 +8,8 @@ describe DockingStation do
     it { expect(DockingStation.new).to respond_to(:release_bike) }
     it { expect((DockingStation.new).release_bike).to be_instance_of(Bike)}
   end
+
+  describe "#dock" do
+    it { expect(DockingStation.new).to respond_to(:dock) }
+  end
 end 
