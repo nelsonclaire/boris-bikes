@@ -9,12 +9,24 @@ class DockingStation
     end    
     
     def release_bike
-        raise "no bikes available" if @bikes.empty?
+        raise "no bikes available" if empty?
         Bike.new
     end
 
     def dock(bike)
-        raise "maximum bikes already docked" if @bikes.count > 19
+        raise "maximum bikes already docked" if full?
         @bikes << bike
     end
+
+    private
+
+    def full? 
+        @bikes.count > 19
+    end
+
+    def empty? 
+        @bikes.empty?
+    end
+
+
 end 
