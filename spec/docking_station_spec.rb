@@ -16,15 +16,22 @@ describe DockingStation do
     end  
 
     it "will release a bike if one exists" do
-        bike1 = Bike.new
+        # bike1 = Bike.new
         docking_station = DockingStation.new
-        docking_station.dock(bike1)
+        docking_station.dock(Bike)
         expect(docking_station.release_bike).to be_an_instance_of(Bike)
     end 
   end
 
   describe "#dock" do
     it { expect(DockingStation.new).to respond_to(:dock) }
+
+    it "will return error when calling 'dock bike' method if there is already a docked bike" do
+      docking_station = DockingStation.new
+      docking_station.dock(Bike)
+      expect { docking_station.dock(Bike) }.to raise_error("maximum bikes already docked")
+    end  
+
   end
 
 end 
