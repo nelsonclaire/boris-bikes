@@ -3,7 +3,15 @@ require "bike"
 
 describe DockingStation do 
 
-  DEFAULT_CAPACITY = 20
+  it "create a new docking station with the capacity not equal to default" do
+    docking_station = DockingStation.new(100)
+    expect(docking_station.capacity).to eq 100
+  end  
+
+  it "create a new docking station with default capacity if no capacity passed" do
+    docking_station = DockingStation.new()
+    expect(docking_station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end  
 
   describe "#release_bike" do
     # it "should respond to release_bike" do
@@ -22,14 +30,16 @@ describe DockingStation do
         docking_station.dock(Bike)
         expect(docking_station.release_bike).to be_an_instance_of(Bike)
     end 
+
+  
   end
 
   describe "#dock" do
     it { expect(DockingStation.new).to respond_to(:dock) }
 
-    it "will return error when calling 'dock bike' method if there is already a docked bike" do
+    it "will return error when calling 'dock bike' method if there is already the maximum number of docked bikes" do
       docking_station = DockingStation.new
-      DEFAULT_CAPACITY.times { docking_station.dock(Bike) }
+      docking_station.capacity.times { docking_station.dock(Bike) }
       expect { docking_station.dock(Bike) }.to raise_error("maximum bikes already docked")
     end  
 
