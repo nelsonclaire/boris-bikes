@@ -16,9 +16,8 @@ describe DockingStation do
     end  
 
     it "will release a bike if one exists" do
-        bike1 = Bike.new
         docking_station = DockingStation.new
-        docking_station.dock(bike1)
+        docking_station.dock(Bike)
         expect(docking_station.release_bike).to be_an_instance_of(Bike)
     end 
   end
