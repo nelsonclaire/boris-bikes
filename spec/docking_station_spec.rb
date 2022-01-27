@@ -3,6 +3,8 @@ require "bike"
 
 describe DockingStation do 
 
+  DEFAULT_CAPACITY = 20
+
   describe "#release_bike" do
     # it "should respond to release_bike" do
     #     docking_station = DockingStation.new
@@ -27,8 +29,7 @@ describe DockingStation do
 
     it "will return error when calling 'dock bike' method if there is already a docked bike" do
       docking_station = DockingStation.new
-      20.times { docking_station.dock(Bike) }
-      # docking_station.dock(Bike)
+      DEFAULT_CAPACITY.times { docking_station.dock(Bike) }
       expect { docking_station.dock(Bike) }.to raise_error("maximum bikes already docked")
     end  
 
