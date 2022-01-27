@@ -27,7 +27,8 @@ describe DockingStation do
 
     it "will return error when calling 'dock bike' method if there is already a docked bike" do
       docking_station = DockingStation.new
-      docking_station.dock(Bike)
+      20.times { docking_station.dock(Bike) }
+      # docking_station.dock(Bike)
       expect { docking_station.dock(Bike) }.to raise_error("maximum bikes already docked")
     end  
 

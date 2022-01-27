@@ -14,7 +14,7 @@ class DockingStation
     end
 
     def dock(bike)
-        raise "maximum bikes already docked" if @bikes.length > 0
+        raise "maximum bikes already docked" if @bikes.count > 19
         @bikes << bike
     end
 end 
