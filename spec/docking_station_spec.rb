@@ -1,5 +1,5 @@
 require "docking_station"
-require "bike"
+require_relative "../lib/bike"
 
 describe DockingStation do 
 
@@ -31,7 +31,12 @@ describe DockingStation do
         expect(docking_station.release_bike).to be_an_instance_of(Bike)
     end 
 
-  
+    # it "will return a bike when not calling a broken bike" do
+    #     docking_station = DockingStation.new
+    #     docking_station.dock(Bike)
+    #     expect(Bike.working?).to eq true 
+    # end
+
   end
 
   describe "#dock" do
@@ -41,7 +46,12 @@ describe DockingStation do
       docking_station = DockingStation.new
       docking_station.capacity.times { docking_station.dock(Bike) }
       expect { docking_station.dock(Bike) }.to raise_error("maximum bikes already docked")
-    end  
+    end
+    
+    # it "will take user feedback whether bike is working or not" do
+    #   docking_station = DockingStation.new
+    #   expect (Bike.working?).to eq false 
+    # end
 
   end
 
